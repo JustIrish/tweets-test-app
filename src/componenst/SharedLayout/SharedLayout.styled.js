@@ -4,20 +4,24 @@ export const Layout = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding: 0 16px;
-
-  /* @media screen and (min-width: 768px) {
-    max-width: 768px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    max-width: 1200px;
-    padding-left: 20px;
-    padding-right: 20px;
-  } */
 `;
 
 export const Main = styled.main`
   flex: 1;
+  width: 100%;
   margin: 0 auto;
+
+  @media screen and (min-width: 375px) {
+    max-width: 375px;
+    padding: 0 16px;
+  }
+
+  @media screen and (min-width: 790px) {
+    max-width: 790px;
+    padding: 0 32px;
+  }
+  @media screen and (min-width: 1440px) {
+    max-width: 1440px;
+    padding: 0 100px;
+  }
 `;

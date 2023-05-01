@@ -6,9 +6,8 @@ export const Card = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
-  max-width: 100%;
+  /* max-width: 100%; */
   width: 380px;
-  height: 460px;
   padding: 28px 36px 36px;
   background: linear-gradient(
     114.99deg,
@@ -19,10 +18,10 @@ export const Card = styled.div`
   box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
   border-radius: 20px;
 
-  @media screen and (min-width: 768px) {
-    flex-basis: calc((100% - 32px) / 2);
+  @media screen and (min-width: 790px) {
+    flex-basis: calc((100% - 20px) / 2);
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1440px) {
     flex-basis: calc((100% - 96px) / 3);
   }
 `;
@@ -34,7 +33,7 @@ export const LogoLink = styled.a`
 `;
 
 export const BgImage = styled.div`
-  width: 308px;
+  width: 100%;
   height: 168px;
   background-image: url(${cardBg});
   background-position: 100%;
@@ -93,30 +92,4 @@ export const TextWrapper = styled.div`
 
 export const TweetsText = styled.p`
   margin-bottom: 16px;
-`;
-
-export const StyledBtn = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 196px;
-  padding: 16px;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 22px;
-  text-transform: uppercase;
-  color: ${({ theme: { colors } }) => colors.btnTextColor};
-  text-transform: uppercase;
-  background-color: ${({ theme: { colors } }) => colors.btnBgColor};
-  border-color: transparent;
-  border-radius: 10.3108px;
-  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
-  transition: box-shadow 300ms linear;
-  cursor: pointer;
-
-  &:hover,
-  &:focus {
-    box-shadow: 0px 4.39163px 4.39163px rgba(0, 0, 0, 0.06);
-  }
 `;

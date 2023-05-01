@@ -7,6 +7,7 @@ const TweetsList = ({ data }) => {
       {data.map(({ id, avatar, tweets, followers }) => (
         <TweetCard
           key={id}
+          id={id}
           avatar={avatar}
           tweets={tweets}
           followers={followers}

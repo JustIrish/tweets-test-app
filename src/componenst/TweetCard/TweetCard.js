@@ -1,3 +1,9 @@
+import { useEffect, useState } from 'react';
+import {
+  loadFromLocalStorage,
+  saveToLocalStorage,
+} from 'services/localStorage';
+
 import {
   Card,
   LogoLink,
@@ -7,16 +13,33 @@ import {
   DecorLine,
   TextWrapper,
   TweetsText,
-  StyledBtn,
 } from './TweetCard.styled';
 import logo from 'images/logo-2x.png';
+import FollowBtn from 'componenst/FollowBtn';
 
-const TweetCard = ({ avatar, tweets, followers }) => {
+const TweetCard = ({ id, avatar, tweets, followers }) => {
+  const [isFollowing, setIsFollowing] = useState(false);
+  const [add, setAdd] = useState(0);
+
+  useEffect(() => {
+    isFollowing ? setAdd(1) : setAdd(0);
+  }, [isFollowing]);
+
+  useEffect(() => {
+    const following = loadFromLocalStorage(`isFollowing${id}`);
+    setIsFollowing(following);
+  }, [id]);
+
+  const onFollowClick = () => {
+    saveToLocalStorage(`isFollowing${id}`, !isFollowing);
+    setIsFollowing(state => !state);
+  };
+
   return (
     <Card>
       <BgImage></BgImage>
       <LogoLink href="https://goit.global/ua/">
-        <img src={logo} alt="logo" width="76" height="22" />
+        <img src={logo} alt="logo" width="76" height="22" loading="lazy" />
       </LogoLink>
       <DecorLine></DecorLine>
       <AvaWrap>
@@ -24,9 +47,9 @@ const TweetCard = ({ avatar, tweets, followers }) => {
       </AvaWrap>
       <TextWrapper>
         <TweetsText>{tweets} tweets</TweetsText>
-        <p>{followers} followers</p>
+        <p>{(followers + add).toLocaleString('en-US')} followers</p>
       </TextWrapper>
-      <StyledBtn>follow</StyledBtn>
+      <FollowBtn onFollowClick={onFollowClick} isFollowing={isFollowing} />
     </Card>
   );
 };
